@@ -1,4 +1,4 @@
-package me.yoursole.main.collision;
+package io.spherious.engine.collision;
 
 import io.spherious.engine.resources.GameObject;
 import io.spherious.engine.resources.Player;
