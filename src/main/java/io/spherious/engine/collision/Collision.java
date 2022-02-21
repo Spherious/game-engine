@@ -51,8 +51,6 @@ public class Collision {
 
                 b.normalize();
 
-                Vector c = b; //save normalized b so that it doesnt need to be renormalized in player velocity
-
                 b.multElements(new Vector(minDist, minDist));
 
 
@@ -62,7 +60,7 @@ public class Collision {
                 p.setLocx((int) (playerLoc.getX()));
                 p.setLocy((int) (playerLoc.getY()));
 
-                b = c;
+                b.normalize();
                 //player velocity
                 b.makeNeg();
 
