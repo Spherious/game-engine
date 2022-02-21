@@ -7,10 +7,19 @@
     <groupId>io.spherious</groupId>
     <artifactId>spherious-engine</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/Spherious/game-engine</url>
+        </repository>
+    </distributionManagement>
 
 </project>
