@@ -1,5 +1,7 @@
 package io.spherious.engine.resources;
 
+import io.spherious.engine.math.Vector2D;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -9,11 +11,11 @@ public class Player {
     private double locy;
     private int defaultSize;
 
-    private Vector movement;
+    private Vector2D movement;
     private ArrayList<Point> savedPoints = null;
 
     public Player(float x, float y, int size, int locx, int locy, int defaultSize) {
-        this.movement = new Vector(x, y);
+        this.movement = new Vector2D(x, y);
         this.size = size;
         this.defaultSize = defaultSize;
 
@@ -49,11 +51,11 @@ public class Player {
         return this.defaultSize;
     }
 
-    public Vector getMovement() {
+    public Vector2D getMovement() {
         return this.movement;
     }
 
-    public void setMovement(Vector v) {
+    public void setMovement(Vector2D v) {
         this.movement = v;
     }
 

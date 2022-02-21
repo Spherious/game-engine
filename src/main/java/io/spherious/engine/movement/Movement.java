@@ -9,8 +9,8 @@ import java.awt.*;
 public class Movement {
 
     public static void applyMovement(Point rel, Player p) {
-        float dx = p.getMovement().getX();
-        float dy = p.getMovement().getY();
+        double dx = p.getMovement().getX();
+        double dy = p.getMovement().getY();
 
         dx += (distancex(p.getLocx(), p.getLocy(), rel.x, rel.y) / 100);
         dy += (distancey(p.getLocx(), p.getLocy(), rel.x, rel.y) / 100);

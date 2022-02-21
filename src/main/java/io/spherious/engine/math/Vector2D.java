@@ -36,6 +36,33 @@ public class Vector2D {
         this.y -= y;
     }
 
+    public void normalize() {
+        double oneOverMagnitude = this.invSqrt((float) (this.x * this.x + this.y * this.y));
+        this.x *= oneOverMagnitude;
+        this.y *= oneOverMagnitude;
+    }
+
+    private float invSqrt(float x) { //more accurate than the traditional invsqrt because it uses newtons method more than once
+        float xhalf = 0.5f * x;
+        int i = Float.floatToIntBits(x);
+        i = 0x5f3759df - (i >> 1);
+        x = Float.intBitsToFloat(i);
+
+        for (int j = 0; j < 10; j++) {
+            x *= (1.5f - xhalf * x * x);
+        }
+
+        return x;
+    }
+
+    public static Vector2D subtract(Vector2D a, Vector2D b) {
+        double ax = a.x;
+        double ay = a.y;
+        double bx = b.x;
+        double by = b.y;
+        return new Vector2D(ax - bx, ay - by);
+    }
+
     public void subtract(Vector2D other) {
         this.subtract(other.getX(), other.getY());
     }
@@ -43,6 +70,11 @@ public class Vector2D {
     public void multiply(double n) {
         this.x *= n;
         this.y  *= n;
+    }
+
+    public void multiply(Vector2D v){
+        this.x *= v.x;
+        this.y *= v.y;
     }
 
     public void divide(double n) {
@@ -53,6 +85,11 @@ public class Vector2D {
     public void negate() {
         this.x *= -1;
         this.y *= -1;
+    }
+
+    public void makeNeg() { //used to simulate a bounce
+        this.x *= this.x > 0.0F ? -1.0F : 1.0F;
+        this.y *= this.y > 0.0F ? -1.0F : 1.0F;
     }
 
     public void pow(double n) {

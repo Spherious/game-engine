@@ -1,8 +1,9 @@
 package io.spherious.engine.collision;
 
+import io.spherious.engine.math.Vector2D;
 import io.spherious.engine.resources.GameObject;
 import io.spherious.engine.resources.Player;
-import io.spherious.engine.resources.Vector;
+
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -15,16 +16,16 @@ public class Collision {
 
         ArrayList<Point> pointsInsidePlayer = p.getPointsInside();
 
-        Vector playerVel = p.getMovement(),
-                b = new Vector(0, 0),
-                bouncy = new Vector(r.getBouncyness(), r.getBouncyness()),
-                centerOfPlayer = new Vector((float) p.getLocx(), (float) p.getLocy());
+        Vector2D playerVel = p.getMovement(),
+                b = new Vector2D(0, 0),
+                bouncy = new Vector2D(r.getBouncyness(), r.getBouncyness()),
+                centerOfPlayer = new Vector2D((float) p.getLocx(), (float) p.getLocy());
 
         int amountOfPointsInPlayerAndObject = 0;
         ArrayList<Point> pointsInPlayerAndObject = new ArrayList<>();
         for (Point point : pointsInsidePlayer) {
             if (r.insideObject(point)) { //point is inside both the player and the object in question
-                Vector pointCenter = Vector.subtract(centerOfPlayer, new Vector(point.x, point.y));
+                Vector2D pointCenter = Vector2D.subtract(centerOfPlayer, new Vector2D(point.x, point.y));
                 b.add(pointCenter);
                 amountOfPointsInPlayerAndObject++;
                 pointsInPlayerAndObject.add(point);
@@ -51,10 +52,10 @@ public class Collision {
 
                 b.normalize();
 
-                b.multElements(new Vector(minDist, minDist));
+                b.multiply(new Vector2D(minDist, minDist));
 
 
-                Vector playerLoc = new Vector((float) p.getLocx(), (float) p.getLocy());
+                Vector2D playerLoc = new Vector2D((float) p.getLocx(), (float) p.getLocy());
                 playerLoc.add(b);
 
                 p.setLocx((int) (playerLoc.getX()));
@@ -64,8 +65,8 @@ public class Collision {
                 //player velocity
                 b.makeNeg();
 
-                playerVel.multElements(b);
-                playerVel.multElements(bouncy);
+                playerVel.multiply(b);
+                playerVel.multiply(bouncy);
 
 
                 p.setMovement(playerVel);
