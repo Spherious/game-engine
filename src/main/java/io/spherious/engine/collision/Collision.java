@@ -7,6 +7,11 @@ import io.spherious.engine.resources.Player;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 
 public class Collision {
@@ -36,18 +41,16 @@ public class Collision {
             if (r.isCollidable()) {
 
                 //player location
+                Optional<Point> points = pointsInPlayerAndObject.stream().min((o1, o2) -> {
+                    float d1 = distanceSquared(o1.x, o1.y, p.getLocx(), p.getLocy());
+                    float d2 = distanceSquared(o2.x, o2.y, p.getLocx(), p.getLocy());
+                    return Float.compare(d1, d2);
+                });
 
-                float minDist = Integer.MAX_VALUE;
+                Point closest = points.orElseGet(Point::new);
 
-                //rewrite using stream API
-                for (Point point : pointsInPlayerAndObject) {
-                    float d = distanceSquared(point.x, point.y, p.getLocx(), p.getLocy());
-                    if (d < minDist) {
-                        minDist = d;
-                    }
-                }//
+                float minDist = distance(closest.x,closest.y,p.getLocx(),p.getLocy());
 
-                minDist = (float) Math.sqrt(minDist);
                 minDist = (p.getSize() / 2f - minDist) * 2;
 
                 b.normalize();
@@ -70,6 +73,9 @@ public class Collision {
 
 
                 p.setMovement(playerVel);
+
+
+
 
 
             }
@@ -95,5 +101,9 @@ public class Collision {
 
     private static float distanceSquared(double x, double y, double x2, double y2) {
         return (float) ((float) Math.pow(y2 - y, 2) + Math.pow(x2 - x, 2));
+    }
+
+    private static float distance(double x, double y, double x2, double y2) {
+        return (float) Math.sqrt(Math.pow(y2 - y, 2) + Math.pow(x2 - x, 2));
     }
 }
