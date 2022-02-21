@@ -2,15 +2,18 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
+      <profile name="Annotation profile for spherious-engine" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.22/lombok-1.18.22.jar" />
+        </processorPath>
         <module name="SpheriousEngine" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="SpheriousEngine" target="14" />
+      <module name="SpheriousEngine" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

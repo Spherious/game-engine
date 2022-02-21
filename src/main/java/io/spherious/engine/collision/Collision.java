@@ -1,8 +1,8 @@
 package me.yoursole.main.collision;
 
-import me.yoursole.main.resources.GameObject;
-import me.yoursole.main.resources.Player;
-import me.yoursole.main.resources.Vector;
+import io.spherious.engine.resources.GameObject;
+import io.spherious.engine.resources.Player;
+import io.spherious.engine.resources.Vector;
 
 import java.awt.*;
 import java.util.ArrayList;

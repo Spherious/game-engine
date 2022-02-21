@@ -1,6 +1,8 @@
 package me.yoursole.main.movement;
 
-import me.yoursole.main.resources.Player;
+
+
+import io.spherious.engine.resources.Player;
 
 import java.awt.*;
 
