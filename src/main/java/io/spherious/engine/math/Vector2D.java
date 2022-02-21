@@ -73,8 +73,6 @@ public class Vector2D {
         return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.x, 2));
     }
 
-    public
-
     public double dot(Vector2D other) {
         return (x * other.getX()) + (y * other.getY());
     }
