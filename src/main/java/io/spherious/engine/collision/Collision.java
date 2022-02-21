@@ -44,7 +44,7 @@ public class Collision {
                     if (d < minDist) {
                         minDist = d;
                     }
-                }
+                }//
 
                 minDist = (float) Math.sqrt(minDist);
                 minDist = (p.getSize() / 2f - minDist) * 2;
