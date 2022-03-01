@@ -74,10 +74,6 @@ public class Collision {
 
                 p.setMovement(playerVel);
 
-
-
-
-
             }
             return true;
         }
