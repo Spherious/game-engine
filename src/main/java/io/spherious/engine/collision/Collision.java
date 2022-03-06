@@ -6,10 +6,7 @@ import io.spherious.engine.resources.Player;
 
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
@@ -66,13 +63,20 @@ public class Collision {
 
                 b.normalize();
                 //player velocity
-                //b.makeNeg();
+                //calc new direction
+                Vector2D vec1 = playerVel.copy();
+                Vector2D vec2 = new Vector2D(b.getY(), -1*b.getX());
+                Vector2D normal = b.copy();
 
-                playerVel.multiply(b);
-                playerVel.multiply(bouncy);
+                double dpa = vec1.dot(vec2);
+                Vector2D pra = vec2.multiply(dpa);
+                double dpb = vec1.dot(normal);
+                Vector2D prb = normal.multiply(dpb);
+                pra.subtract(prb);
 
+                pra = pra.multiply(bouncy);
 
-                p.setMovement(playerVel);
+                p.setMovement(pra);
 
             }
             return true;

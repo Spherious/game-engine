@@ -67,14 +67,12 @@ public class Vector2D {
         this.subtract(other.getX(), other.getY());
     }
 
-    public void multiply(double n) {
-        this.x *= n;
-        this.y  *= n;
+    public Vector2D multiply(double n) {
+        return new Vector2D(this.x * n, this.y  * n);
     }
 
-    public void multiply(Vector2D v){
-        this.x *= v.x;
-        this.y *= v.y;
+    public Vector2D multiply(Vector2D v){
+        return new Vector2D(this.x * v.x,this.y * v.y);
     }
 
     public void divide(double n) {
