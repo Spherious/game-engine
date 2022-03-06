@@ -74,6 +74,16 @@ public class Collision {
                 Vector2D prb = normal.multiply(dpb);
                 pra.subtract(prb);
 
+                if(Math.tan(pra.getX()/pra.getY()) == Math.tan(playerVel.getX()/playerVel.getY())){
+                    vec2 = vec2.multiply(-1);
+
+                    dpa = vec1.dot(vec2);
+                    pra = vec2.multiply(dpa);
+                    dpb = vec1.dot(normal);
+                    prb = normal.multiply(dpb);
+                    pra.subtract(prb);
+                }
+
                 pra = pra.multiply(bouncy);
 
                 p.setMovement(pra);
