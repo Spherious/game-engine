@@ -74,7 +74,7 @@ public class Collision {
                 Vector2D prb = normal.multiply(dpb);
                 pra.subtract(prb);
 
-                if(Math.tan(pra.getX()/pra.getY()) == Math.tan(playerVel.getX()/playerVel.getY())){
+                if(normal.getX()>0 && normal.getY()<0){
                     vec2 = vec2.multiply(-1);
 
                     dpa = vec1.dot(vec2);
