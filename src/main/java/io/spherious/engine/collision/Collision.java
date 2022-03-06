@@ -66,7 +66,7 @@ public class Collision {
 
                 b.normalize();
                 //player velocity
-                b.makeNeg();
+                //b.makeNeg();
 
                 playerVel.multiply(b);
                 playerVel.multiply(bouncy);
