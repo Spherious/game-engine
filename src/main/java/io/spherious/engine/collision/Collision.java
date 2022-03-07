@@ -6,7 +6,10 @@ import io.spherious.engine.resources.Player;
 
 
 import java.awt.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
@@ -61,41 +64,21 @@ public class Collision {
                 p.setLocx((int) (playerLoc.getX()));
                 p.setLocy((int) (playerLoc.getY()));
 
+                b.normalize();
                 //player velocity
-                //calc new direction
+                b.makeNeg();
 
-                //alternative
-                //make b neg
-                //mult playervel by b
-                //go from there
-                //mult by bouncy
+                playerVel.multiply(b);
+                playerVel.multiply(bouncy);
 
-                Vector2D pra = reflect(playerVel, b);
-                pra = pra.multiply(bouncy);
 
-                p.setMovement(pra);
+                p.setMovement(playerVel);
 
             }
             return true;
         }
 
         return false;
-
-    }
-
-    private static Vector2D reflect(Vector2D a, Vector2D b){
-        double magA = a.magnitude();
-        a.negate();
-        a.normalize();
-        b.normalize();
-
-        double c = a.dot(b) * 2;
-        Vector2D d = b.multiply(c);
-        d.subtract(a);
-        d.normalize();
-
-        return d.multiply(magA);
-
 
     }
 
