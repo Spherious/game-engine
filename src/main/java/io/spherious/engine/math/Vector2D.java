@@ -105,7 +105,7 @@ public class Vector2D {
     }
 
     public double magnitude() {
-        return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.x, 2));
+        return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
     }
 
     public double dot(Vector2D other) {

@@ -82,19 +82,17 @@ public class Collision {
     }
 
     private static Vector2D reflect(Vector2D a, Vector2D b){
-        b = new Vector2D(b.getY(), b.getX());
-        b.normalize();
+        double magA = a.magnitude();
+        a.negate();
 
-        Vector2D vec2 = new Vector2D(b.getY(), -1*b.getX());
-        Vector2D normal = b.copy();
+        double c = a.dot(b) * 2;
+        Vector2D d = b.multiply(c);
+        d.subtract(a);
+        d.normalize();
 
-        double dpa = a.dot(vec2);
-        Vector2D pra = vec2.multiply(dpa);
-        double dpb = a.dot(normal);
-        Vector2D prb = normal.multiply(dpb);
-        pra.subtract(prb);
+        return d.multiply(magA);
 
-        return pra;
+
     }
 
     public static void collideWithWall(Player p, float dimx, float dimy, float compression) {
