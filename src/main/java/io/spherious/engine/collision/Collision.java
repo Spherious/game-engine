@@ -85,8 +85,6 @@ public class Collision {
     }
 
     private static Vector2D reflect(Vector2D a, Vector2D b){
-        a = a.copy();
-        b = b.copy();
         double magA = a.magnitude();
         a.negate();
 
@@ -94,9 +92,9 @@ public class Collision {
         Vector2D d = b.multiply(c);
         d.subtract(a);
         d.normalize();
+        d.negate();
 
         return d.multiply(magA);
-
 
     }
 
