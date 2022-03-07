@@ -88,6 +88,8 @@ public class Collision {
                 Vector2D pra = reflect(playerVel, b);
                 pra = pra.multiply(bouncy);
 
+                //update movement
+
                 p.setMovement(pra);
 
             }
