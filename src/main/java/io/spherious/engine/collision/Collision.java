@@ -12,6 +12,21 @@ import java.util.stream.Stream;
 
 
 public class Collision {
+
+    /**
+     * This function works in 3 stages:
+     * First it gets the points inside the player
+     * Next it loops over each of these points and checks if it is inside of the GameObject
+     * if it is, then it adds it to vector b which keeps track of the sum of all points inside both
+     * Next we normalize b.  b is the normal vector to the GameObject at the point of collision.
+     * Next the player is teleported to the negative of the shortest vector between the player and the gameobject
+     * The player's velocity is set to the reflection of the player's movement vector over b (the normal) times the
+     * bounciness of the GameObject r
+     *
+     * @param r the object to collide with
+     * @param p the player that's colliding
+     * @return the player with changed position and velocity
+     */
     public static boolean collideWithObject(GameObject r, Player p) {
         if (!r.compute()) //for backgrounds and sprites
             return false;
