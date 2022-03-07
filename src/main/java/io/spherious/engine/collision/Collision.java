@@ -61,29 +61,14 @@ public class Collision {
                 p.setLocx((int) (playerLoc.getX()));
                 p.setLocy((int) (playerLoc.getY()));
 
-                b.normalize();
                 //player velocity
                 //calc new direction
-                Vector2D vec1 = playerVel.copy();
-                Vector2D vec2 = new Vector2D(b.getY(), -1*b.getX());
-                Vector2D normal = b.copy();
 
-                double dpa = vec1.dot(vec2);
-                Vector2D pra = vec2.multiply(dpa);
-                double dpb = vec1.dot(normal);
-                Vector2D prb = normal.multiply(dpb);
-                pra.subtract(prb);
-
-                if(normal.getX()>0 && normal.getY()<0){
-                    vec2 = vec2.multiply(-1);
-
-                    dpa = vec1.dot(vec2);
-                    pra = vec2.multiply(dpa);
-                    dpb = vec1.dot(normal);
-                    prb = normal.multiply(dpb);
-                    pra.subtract(prb);
-                }
-
+                //alternative
+                //make b neg
+                //mult playervel by b
+                //go from there
+                Vector2D pra = reflect(playerVel, b);
                 pra = pra.multiply(bouncy);
 
                 p.setMovement(pra);
@@ -94,6 +79,22 @@ public class Collision {
 
         return false;
 
+    }
+
+    private static Vector2D reflect(Vector2D a, Vector2D b){
+        b = new Vector2D(b.getY(), b.getX());
+        b.normalize();
+
+        Vector2D vec2 = new Vector2D(b.getY(), -1*b.getX());
+        Vector2D normal = b.copy();
+
+        double dpa = a.dot(vec2);
+        Vector2D pra = vec2.multiply(dpa);
+        double dpb = a.dot(normal);
+        Vector2D prb = normal.multiply(dpb);
+        pra.subtract(prb);
+
+        return pra;
     }
 
     public static void collideWithWall(Player p, float dimx, float dimy, float compression) {
