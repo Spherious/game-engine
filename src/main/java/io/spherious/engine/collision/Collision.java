@@ -70,8 +70,6 @@ public class Collision {
                 //go from there
 
                 Vector2D pra = reflect(playerVel, b);
-                System.out.println(playerVel+"--"+b+"--"+pra);
-
                 pra = pra.multiply(bouncy);
 
                 p.setMovement(pra);
@@ -87,14 +85,16 @@ public class Collision {
     private static Vector2D reflect(Vector2D a, Vector2D b){
         double magA = a.magnitude();
         a.negate();
+        a.normalize();
+        b.normalize();
 
         double c = a.dot(b) * 2;
         Vector2D d = b.multiply(c);
         d.subtract(a);
         d.normalize();
-        d.negate();
 
         return d.multiply(magA);
+
 
     }
 
