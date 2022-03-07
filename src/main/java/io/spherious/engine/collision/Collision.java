@@ -68,6 +68,7 @@ public class Collision {
                 //make b neg
                 //mult playervel by b
                 //go from there
+                //mult by bouncy
 
                 Vector2D pra = reflect(playerVel, b);
                 pra = pra.multiply(bouncy);
