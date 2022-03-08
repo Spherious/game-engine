@@ -73,8 +73,8 @@ public class Collision {
                 Vector2D playerLoc = new Vector2D((float) p.getLocx(), (float) p.getLocy());
                 playerLoc.add(b);
 
-                p.setLocx((int) (playerLoc.getX()));
-                p.setLocy((int) (playerLoc.getY()));
+                //p.setLocx((int) (playerLoc.getX()));
+                //p.setLocy((int) (playerLoc.getY()));
 
                 //player velocity
                 //calc new direction
