@@ -73,8 +73,8 @@ public class Collision {
                 Vector2D playerLoc = new Vector2D((float) p.getLocx(), (float) p.getLocy());
                 playerLoc.add(b);
 
-                //p.setLocx((int) (playerLoc.getX()));
-                //p.setLocy((int) (playerLoc.getY()));
+                p.setLocx((int) (playerLoc.getX()));
+                p.setLocy((int) (playerLoc.getY()));
 
                 //player velocity
                 //calc new direction
@@ -84,6 +84,7 @@ public class Collision {
                 //mult playervel by b
                 //go from there
                 //mult by bouncy
+                System.out.println(b);
 
                 Vector2D pra = reflect(playerVel, b);
                 pra = pra.multiply(bouncy);
