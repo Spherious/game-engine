@@ -6,7 +6,7 @@
 
     <groupId>io.spherious</groupId>
     <artifactId>spherious-engine</artifactId>
-    <version>0.0.21</version>
+    <version>0.0.22</version>
     <packaging>jar</packaging>
 
     <properties>
