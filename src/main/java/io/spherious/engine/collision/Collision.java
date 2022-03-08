@@ -84,9 +84,11 @@ public class Collision {
                 //mult playervel by b
                 //go from there
                 //mult by bouncy
-                System.out.println(b);
+
 
                 Vector2D pra = reflect(playerVel, b);
+                System.out.println(pra);
+
                 pra = pra.multiply(bouncy);
 
                 //update movement
