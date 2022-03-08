@@ -67,7 +67,7 @@ public class Collision {
 
                 b.normalize();
 
-                b.multiply(new Vector2D(minDist, minDist));
+                b = b.multiply(new Vector2D(minDist, minDist).magnitude());
 
 
                 Vector2D playerLoc = new Vector2D((float) p.getLocx(), (float) p.getLocy());
@@ -87,7 +87,6 @@ public class Collision {
 
 
                 Vector2D pra = reflect(playerVel, b);
-                System.out.println(pra);
 
                 pra = pra.multiply(bouncy);
 
