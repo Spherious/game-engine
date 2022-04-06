@@ -197,6 +197,6 @@ public class Collision {
     }
 
     private static float distance(double x, double y, double x2, double y2) {
-        return (float) Math.sqrt(Math.pow(y2 - y, 2) + Math.pow(x2 - x, 2));
+        return (float) Math.sqrt(distanceSquared(x, y, x2, y2));
     }
 }
